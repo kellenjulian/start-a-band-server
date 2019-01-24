@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import APIUrl from './helpers/environment';
+import APIUrl from '../../../helpers/environment';
 
 import Post from './Post/Post'
 import './Posts.css';

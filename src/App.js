@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Auth from './components/Main/Auth/Auth';
 import Posts from './components/Main/Posts/Posts';
-import APIUrl from '../../helpers/environment';
+import APIUrl from './helpers/environment';
 
 class App extends Component {
   state = {
