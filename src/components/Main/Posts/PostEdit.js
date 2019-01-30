@@ -54,6 +54,9 @@ class PostEdit extends React.Component {
       })  .then(res => res.json())
           .then(json => this.setState({posts: json.postdata}))
   } 
+  testClick() {
+    console.log('clicked');
+  }
   
 
   render() {
@@ -76,7 +79,7 @@ class PostEdit extends React.Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" type="submit">Post Update</Button>{' '}
+            <Button color="primary" type="submit" onClick={this.updatePost}>Post Update</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
