@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
 
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 import './App.css';
 import Auth from './components/Main/Auth/Auth';
 import Posts from './components/Main/Posts/Posts';
 import APIUrl from './helpers/environment';
+import Sidebar from './components/Main/Sidebar/Sidebar';
+import NewPost from "./components/Main/New-Post/NewPost"
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
 class App extends Component {
   state = {
-    sessionToken: undefined
+    sessionToken: ''
   }
 
   //mock function
 
   handleSubmit = (event) => {
-    fetch(`${APIUrl}/pies/${event.target.value}`)
+    fetch(`${APIUrl}/api/post/${event.target.value}`)
   }
   //
 
   removeSessionToken = () => {
-    this.setState({sessionToken: undefined})
+    this.setState({sessionToken: ''})
   }
 
-  storeSessionToken = (input) => {
-    this.setState({sessionToken: input})
+  storeSessionToken = (token) => {
+    this.setState({sessionToken: token})
+    localStorage.setItem('token', token)
   }
 
   viewConductor() {
-    return (this.state.sessionToken !== undefined) ? <Posts />: <Auth tokenHandler={this.storeSessionToken}/>
+    return (this.state.sessionToken !== '') ? <Sidebar />: <Auth tokenHandler={this.storeSessionToken}/>
   }
   
   render() {
     return (
+        <Router>
       <div className="App">
-        <Navbar logout={this.removeSessionToken}/>
+        <Header logout={this.removeSessionToken}/>
+        {/* <Sidebar /> */}
         {this.viewConductor()}
       </div>
+        </Router>
     );
   }
 }
