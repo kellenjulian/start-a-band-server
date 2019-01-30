@@ -66,13 +66,13 @@ class PostEdit extends React.Component {
             <Label>Name:</Label>
             <Input id = "bandname" placeholder={this.state.bandname} />
             <Label>Location:</Label>
-            <Input placeholder={this.state.location} />
+            <Input id="location"placeholder={this.state.location} />
             <Label>Influential Artists:</Label>
-            <Input placeholder={this.state.influentialartists} />
+            <Input id="influentialartists" placeholder={this.state.influentialartists} />
             <Label>Looking For:</Label>
-            <Input placeholder={this.state.lookingfor} />
+            <Input id="lookingfor" placeholder={this.state.lookingfor} />
             <Label>Instruments/Skills:</Label>
-            <Input placeholder={this.state.instrumentsskills} />
+            <Input id="instruments/skills" placeholder={this.state.instrumentsskills} />
 
           </ModalBody>
           <ModalFooter>
