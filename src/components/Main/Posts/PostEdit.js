@@ -54,8 +54,14 @@ class PostEdit extends React.Component {
       })  .then(res => res.json())
           .then(json => this.setState({posts: json.postdata}))
   } 
-  testClick() {
-    console.log('clicked');
+  testClick = () => {
+    console.log(this.state);
+  }
+
+  handleChange = (event) =>  {
+    this.setState({
+        [event.target.name]: event.target.value
+    })
   }
   
 
@@ -67,19 +73,19 @@ class PostEdit extends React.Component {
           <ModalHeader toggle={this.toggle}>Update Post</ModalHeader>
           <ModalBody>
             <Label>Name:</Label>
-            <Input id = "bandname" placeholder={this.state.bandname} />
+            <Input id = "bandname" name="bandname" placeholder={this.state.bandname} onChange={this.handleChange} />
             <Label>Location:</Label>
-            <Input id="location"placeholder={this.state.location} />
+            <Input id="location" name="location" placeholder={this.state.location} onChange={this.handleChange}/>
             <Label>Influential Artists:</Label>
-            <Input id="influentialartists" placeholder={this.state.influentialartists} />
+            <Input id="influentialartists" name="influentialartists" placeholder={this.state.influentialartists} onChange={this.handleChange}/>
             <Label>Looking For:</Label>
-            <Input id="lookingfor" placeholder={this.state.lookingfor} />
+            <Input id="lookingfor" name="lookingfor" placeholder={this.state.lookingfor} onChange={this.handleChange} />
             <Label>Instruments/Skills:</Label>
-            <Input id="instruments/skills" placeholder={this.state.instrumentsskills} />
+            <Input id="instruments/skills" name="instrumentsskills" placeholder={this.state.instrumentsskills} onChange={this.handleChange} />
 
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" type="submit" onClick={this.updatePost}>Post Update</Button>{' '}
+            <Button color="primary" type="submit" onChange={this.handleChange} onClick={this.testClick}>Post Update</Button>{' '}
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
